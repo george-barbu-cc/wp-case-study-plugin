@@ -1,0 +1,13 @@
+@mixin show-hide($desktop: true) {
+  @if $desktop {
+    display: none;
+    @media (min-width: $medium) {
+      display: block;
+    }
+  } @else {
+    display: none;
+    @media (max-width: $medium) {
+      display: block;
+    }
+  }
+}

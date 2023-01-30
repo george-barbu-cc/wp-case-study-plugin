@@ -1,0 +1,201 @@
+#caseStudyPopup {
+  font-family: $font-family-tisa-sans-pro;
+  display: none;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  overflow: hidden;
+
+  .contentPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    background-color: #fff;
+    max-width: 484px;
+    width: 100%;
+    padding: 32px;
+    @media (max-width: $medium) {
+      padding: 24px 16px;
+      max-width: 300px;
+    }
+
+    .formPopup {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      // display: none;
+
+      .formContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 24px;
+        @media (max-width: $medium) {
+          margin-top: 10px;
+        }
+
+        input {
+          align-self: stretch;
+          flex-grow: 0;
+          padding: 17px 16px;
+          color: $text;
+
+          &[type="text"] {
+            padding: 17px 16px;
+            border-radius: 10px;
+            font-weight: 400;
+            color: $text;
+            font-size: 18px;
+            border: 1px solid #b0c2c2;
+
+            &::placeholder {
+              color: #b0c2c2;
+            }
+
+            &:focus,
+            &:active {
+              box-shadow: none;
+              outline: none;
+              border: 1px solid #5770ef;
+            }
+
+            &.error {
+              border: 1px solid $error;
+              align-items: flex-start;
+              &:focus,
+              &:active {
+                box-shadow: none;
+                outline: none;
+                border: 1px solid $error;
+              }
+            }
+          }
+        }
+
+        .error {
+          color: $error;
+          font-weight: 400;
+          font-size: 11px;
+          line-height: 18px;
+          display: block;
+        }
+
+        #submit {
+          cursor: pointer;
+          color: white;
+          background: $primary;
+          border: none;
+          font-size: 20px;
+          border-radius: 8px;
+          padding: 20px 24px;
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      flex-direction: row;
+      @media (max-width: $medium) {
+        flex-direction: column;
+      }
+      img {
+        &.desktop {
+          @include show-hide($desktop: true);
+        }
+        &.mobile {
+          @include show-hide($desktop: false);
+        }
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding-right: 32px;
+
+        @media (max-width: $medium) {
+          max-width: 100%;
+          padding-right: 16px;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      h3 {
+        padding: 0;
+        margin: 0;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        color: $text;
+      }
+      p {
+        color: $text-light;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        margin: 0;
+      }
+    }
+    .cancel {
+      cursor: pointer;
+      position: absolute;
+      right: 32px;
+
+      @include show-hide($desktop: true);
+      @media (max-width: $medium) {
+        right: 16px;
+      }
+      svg {
+        height: 14px;
+        width: 14px;
+        width: 14px;
+        line {
+          stroke: #868989;
+        }
+      }
+    }
+    .close {
+      color: $primary;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      margin-top: 5px;
+      @include show-hide($desktop: false);
+    }
+
+    .successPopup {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+
+      .content {
+        text-align: center;
+
+        .text {
+          padding: 0;
+          align-items: center;
+        }
+
+        img {
+          max-width: 200px;
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+}
